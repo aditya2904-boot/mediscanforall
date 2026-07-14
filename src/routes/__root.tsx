@@ -88,14 +88,17 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       {
         property: "og:description",
         content:
-          "Zero-friction camera capture, AI-powered OCR, and instant medication summaries with a 1KM pharmacy locator.",
+          "MediScan AI turns handwritten prescriptions into clear, spoken guidance in seconds — with multilingual summaries, safety alerts, and nearby pharmacy locator.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "MediScan AI — Scan. Understand. Heal." },
+      { name: "twitter:description", content: "MediScan AI turns handwritten prescriptions into clear, spoken guidance in seconds — with multilingual summaries, safety alerts, and nearby pharmacy locator." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/8e64b6c5-6030-4b93-9fd1-8837bd7341bd/id-preview-487f1743--bb767b6d-7535-4481-bc5e-8e9e65a00412.lovable.app-1784042300409.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/8e64b6c5-6030-4b93-9fd1-8837bd7341bd/id-preview-487f1743--bb767b6d-7535-4481-bc5e-8e9e65a00412.lovable.app-1784042300409.png" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
-      { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
