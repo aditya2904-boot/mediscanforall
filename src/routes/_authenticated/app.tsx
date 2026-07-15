@@ -172,7 +172,10 @@ function AppPage() {
             ))}
           </div>
         </section>
+
+        <RemindersPanel />
       </main>
+
 
       <ScanModal
         open={scanOpen}
