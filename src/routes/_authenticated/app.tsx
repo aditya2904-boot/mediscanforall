@@ -9,6 +9,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/hooks/useAuth";
 import { listScans, deleteScan } from "@/lib/scans.functions";
 import { ScanModal } from "@/components/mediscan/ScanModal";
+import { RemindersPanel } from "@/components/mediscan/RemindersPanel";
 
 export const Route = createFileRoute("/_authenticated/app")({
   component: AppPage,
@@ -171,7 +172,10 @@ function AppPage() {
             ))}
           </div>
         </section>
+
+        <RemindersPanel />
       </main>
+
 
       <ScanModal
         open={scanOpen}
