@@ -6,16 +6,22 @@ const TimeStr = z.string().regex(/^([01]\d|2[0-3]):[0-5]\d$/, "Time must be HH:M
 
 const ReminderInput = z.object({
   medication_name: z.string().min(1).max(120),
-  dosage: z.string().max(200).optional().nullable(),
-  notes: z.string().max(500).optional().nullable(),
+  dosage: z.string().max(200).nullish(),
+  notes: z.string().max(500).nullish(),
   times: z.array(TimeStr).min(1).max(12),
   days_of_week: z.array(z.number().int().min(0).max(6)).min(1).max(7),
   timezone: z.string().max(64).default("UTC"),
   enabled: z.boolean().default(true),
-  start_date: z.string().optional().nullable(),
-  end_date: z.string().optional().nullable(),
-  scan_id: z.string().uuid().optional().nullable(),
+  start_date: z.string().nullish(),
+  end_date: z.string().nullish(),
+  scan_id: z.string().uuid().nullish(),
 });
+
+function clean<T extends Record<string, unknown>>(o: T): T {
+  const out: Record<string, unknown> = {};
+  for (const [k, v] of Object.entries(o)) if (v !== undefined && v !== null) out[k] = v;
+  return out as T;
+}
 
 export const listReminders = createServerFn({ method: "GET" })
   .middleware([requireSupabaseAuth])
