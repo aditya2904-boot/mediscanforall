@@ -41,6 +41,65 @@ export type Database = {
         }
         Relationships: []
       }
+      reminders: {
+        Row: {
+          created_at: string
+          days_of_week: number[]
+          dosage: string | null
+          enabled: boolean
+          end_date: string | null
+          id: string
+          medication_name: string
+          notes: string | null
+          scan_id: string | null
+          start_date: string
+          times: string[]
+          timezone: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          days_of_week?: number[]
+          dosage?: string | null
+          enabled?: boolean
+          end_date?: string | null
+          id?: string
+          medication_name: string
+          notes?: string | null
+          scan_id?: string | null
+          start_date?: string
+          times?: string[]
+          timezone?: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          days_of_week?: number[]
+          dosage?: string | null
+          enabled?: boolean
+          end_date?: string | null
+          id?: string
+          medication_name?: string
+          notes?: string | null
+          scan_id?: string | null
+          start_date?: string
+          times?: string[]
+          timezone?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "reminders_scan_id_fkey"
+            columns: ["scan_id"]
+            isOneToOne: false
+            referencedRelation: "scans"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       scans: {
         Row: {
           created_at: string
