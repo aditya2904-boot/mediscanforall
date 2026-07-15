@@ -40,7 +40,7 @@ export const createReminder = createServerFn({ method: "POST" })
   .handler(async ({ data, context }) => {
     const { data: row, error } = await context.supabase
       .from("reminders")
-      .insert({ ...data, user_id: context.userId })
+      .insert(clean({ ...data, user_id: context.userId }))
       .select()
       .single();
     if (error) throw new Error(error.message);
@@ -55,7 +55,7 @@ export const updateReminder = createServerFn({ method: "POST" })
   .handler(async ({ data, context }) => {
     const { data: row, error } = await context.supabase
       .from("reminders")
-      .update(data.patch)
+      .update(clean(data.patch))
       .eq("id", data.id)
       .select()
       .single();
